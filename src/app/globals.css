@@ -1,0 +1,413 @@
+@import '~bootstrap/dist/css/bootstrap.min.css';
+
+/*========= LoadingのためのCSS ===============*/
+
+/* Loading背景画面設定　*/
+
+#splash {
+    /*fixedで全面に固定*/
+	position: fixed;
+	z-index: 999;
+	width: 100%;
+	height: 100%;
+	background:rgba(3, 3, 3, 0.9);
+	text-align:center;
+	color:#fff;
+}
+
+/* Loadingバー中央配置　*/
+#splash_text {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+    z-index: 999;
+	width: 100%;
+	transform: translate(-50%, -50%);
+	color: #fff;
+}
+
+/*ブラウザがそれぞれ持っているCSSをリセットするための記述*/
+*{  
+    margin: 0;/*上下左右のマージンを一括で指定するプロパティ*/
+    padding: 0; /*周りの隙間の大きさ*/
+    box-sizing: border-box;/*パディングやボーダーのサイズが異なるボックスでも統一的に幅や高さを指定することが出来る*/
+    color: #6c6b6b;
+}
+
+a{
+    text-decoration: none;/*下線表示なし*/
+}
+/**/
+header, nav, h2, .main-visual, footer{
+    font-family: Chalkduster, "Bradley Hand", Courier, "Segoe Print", sans-serif; 
+}/*左から順に優先的にフォントが割り当てられる、フォントが端末にない場合に右のフォントが利用される、日本語、半角の時は""で囲む*/
+
+/* ---main-visual用---------------------*/
+
+.main-visual{
+    width: 100%; /*横幅いっぱい */
+    height: 600px; /*高さ600px */
+    background-image: url(/images/uv2.jpg);
+    background-size: cover;/*縦横比を維持したまま背景領域を埋めつくす 初期設定では左上を基準に表示*/
+    background-position: center;/*背景画像を中央に配置 */
+}
+
+.main-visual-content{
+    width: 40%; /*横幅40%　幅が変わってもレイアウトを保てるように */
+    height: 600px;
+    background-color: rgba(0, 0, 0, 0.5); /*背景色を半透明の黒にする　4番目の引数が透明度、１～０ */
+    text-align: center; /*文字を中央ぞろえにする (左右)　基準にする親要素に適応させる、子要素のテキストが中央ぞろえになる*/
+    padding-top: 200px;/*上側の内側余白で垂直方向の位置を調整 */
+}
+
+.fadeLeft{
+    animation-name:fadeLeftAnime;
+    animation-duration:8.0s;
+    animation-fill-mode:forwards;
+    opacity:0;
+}
+    
+@keyframes fadeLeftAnime{
+      from {
+        opacity: 0;
+        transform: translateX(-100px);
+      }
+    
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+}
+    
+
+.main-visual-text{
+    color: #fff; /*文字色を白に変更 */
+}
+
+.name-border1{
+    border: solid 4px orange;
+    width: 50%;
+    margin: 0 auto;
+    animation-delay : 5.0s;
+}
+
+.name-border2{
+    border: solid 2px orange;
+    width: 20%;
+    margin: 0 50px auto 100px;
+    animation-delay : 5.0s;
+}
+.main-visual-name{
+    margin-top: 30px; /*上側の外側の余白 */
+    color: #fff; /*文字色を白に変更 */
+}
+
+.main-visual-myname{
+    text-align: center;
+    position: relative;
+    bottom: 120px;
+    font-size: 100px;
+    color: white;
+}
+/* ---main用---------------------*/
+.various-contents{
+    width: 800px; /*横幅800px　*/ 
+    display: flex; /*Flexboxの利用 */
+    justify-content: center; /*子要素の横並び・中央寄せ*/
+    margin: 0 auto; /*中央寄せ(左右に余白がないと出来ない) */
+    padding: 70px 0;/*上下に70px、左右に0pxの余白 */
+}
+
+.blog{
+    width: 540px;
+    margin-right: 30px; /*領域の右側余白 */
+}
+.blog-heading{
+    border-bottom: 8px solid #f7f7f7;/*下線　色*/
+    text-align: center;/*中央ぞろえ*/
+    line-height: 0.6;/*headingクラスの行間を設定*/
+}
+
+.blog-box{
+    padding-top: 50px;/*余白を開けるためblog-itemを囲んだクラスを作り、上に余白を作る */
+}
+
+.blog-item{
+    padding-bottom: 20px;
+    margin-bottom: 20px;/* なぜpaddingとmargin併用？　padding-bottom 40pxではだめ？ */
+    border-bottom: 1px solid #f7f7f7;
+    display: flex;
+    justify-content: flex-start;/*ブログの内容を左並びにする*/
+}
+
+.category{
+    display: inline-block;/*cssで適応可能にしている、横並びになるが、他の要素がインラインじゃないから横にならない、ここでインラインにしてからインラインブロックにした理由が分からん*/
+    padding: 5px 8px; 
+    background-color: #acabab;
+    border-radius: 3px;/*少しだけ角を丸める */
+    color: #fff;
+    font-size: 11px;
+}
+
+.pagination{
+    text-align: center;
+    padding-top: 50px;
+}
+
+.pagination p{/*paginationクラスのpだけ適応*/
+    display: inline-block;/*横並びにする*/
+    width: 30px;
+    height: 30px;
+    margin: 0 5px;
+    color: #fff;
+    background-color: #acabab;
+    border-radius: 3px;
+    line-height: 30px;/*行間*/
+}
+
+.blog-image{
+    height: 180px;
+}
+
+.blog-text{
+    padding: 25px 0 0 30px;/*textの周りを空ける*/
+}
+
+.blog-text-heading{
+    padding-bottom: 15px;/*recent blogの下を空ける */
+}
+
+.blog-date{
+    height: 12px;
+    display: inline-block;/*categoryクラスと横並びにする*/
+}
+/*----blog-item------*/
+
+.sidebar{
+   width: 230px;
+}
+
+.common-heading{
+    border-bottom: 8px solid #f7f7f7;
+    text-align: center;
+    line-height: 0.6;
+}
+
+.sidebar-contents{
+    padding: 50px 0; /*各内容の余白*/
+}
+
+.popular-text,
+.categories-text{
+    padding-bottom: 5px;/*popularとcateforiesの各テキストの余白*/
+    border-bottom: 1px solid #f7f7f7;/*下線 */
+    margin-bottom: 5px;
+}
+
+
+.popular-text:last-child, /*最後の要素のみ以下のCSSを適応する*/
+.categories-text:last-child{
+    margin: 0;
+    padding: 0;
+    border: none;
+}
+
+.instagram .sidebar-contents{
+    display: flex;
+    flex-wrap: wrap;/*単一業に押し込む*/
+}
+
+.instagram-box{
+    width: 110px;
+    padding-top: 110px;
+    background-size: cover;
+    background-position: center;
+    margin-bottom: 10px;
+    border-radius: 10px;
+}
+
+.instagram-box:nth-child(odd){/*奇数のみ適応*/
+    margin: 0 10px 10px 0;/*上、右、下、左*/
+}
+
+.instagram-box:nth-child(1){ 
+    background-image: url(/images/pictures.jpg);
+}
+
+.instagram-box:nth-child(2){
+    background-image: url(/images/logo.jpg);
+}
+
+.instagram-box:nth-child(3){
+    background-image: url(/images/coffee.jpg);
+}
+
+.instagram-box:nth-child(4){
+    background-image: url(/images/intern.jpg);
+}
+
+.instagram-box:nth-child(5){
+    background-image: url(/images/oversea.jpg);
+}
+
+.instagram-box:nth-child(6){
+    background-image: url(/images/soon.jpg);
+}
+
+.btn{
+    /*アニメーションの起点とするためrelativeを指定*/
+    position: relative;
+	overflow: hidden;
+    /*アニメーションの指定*/   
+    transition: ease .2s;
+}
+
+/*== 背景が流れる（上から下） */
+.bgtop:before {
+ 	content: '';
+    /*絶対配置で位置を指定*/
+ 	position: absolute;
+ 	top:0;
+ 	left: 0;
+ 	z-index: 2;
+ 	width: 100%;
+	height: 0;
+    /*アニメーション*/
+ 	transition:.3s cubic-bezier(0.8, 0, 0.2, 1) 0s;
+}
+
+/*hoverした際の形状*/
+.bgtop:hover:before{
+	 height: 100%;	
+ 	 background-color: rgba(3, 3, 3, 0.2);
+}
+
+.careers{
+    margin: 20%;
+}
+
+table{
+    border:none;
+}
+/* ---footer用---------------------*/
+footer{
+    width: 100%; /*横幅いっぱい */
+    height: 600px;/*高さ300px */
+    background-color: #444444;
+}
+
+.footer-text{
+    color: #fff;
+}
+
+.footer-introduce{
+    display: flex;
+    justify-content: flex-start;/*ブログの内容を左並びにする*/
+}
+
+.logo-visual{
+    width: 80%;
+    height: 300px;
+    background-image: url(/images/uv2.jpg);
+    background-size: cover;/*縦横比を維持したまま背景領域を埋めつくす 初期設定では左上を基準に表示*/
+    background-position: center;/*背景画像を中央に配置 */
+}
+
+/* pictures画面　*/
+
+.pictures-text{
+    width: 40%; /*横幅40%　幅が変わってもレイアウトを保てるように */
+    margin:auto;
+    height: 300px;
+    line-height: 50px;
+    text-align: center; /*文字を中央ぞろえにする (左右)　基準にする親要素に適応させる、子要素のテキストが中央ぞろえになる*/
+    padding-top: 105px;/*上側の内側余白で垂直方向の位置を調整 */
+}
+
+.pictures-content{
+    width: 70%;
+    margin-top: 400px;
+}
+
+.pictures-head{
+    margin-top: 300px;
+}
+
+/*logo*/
+.logos-content{
+    margin-top: 0px;
+    width: 60%;
+}
+
+/* レスポンシブ対応 */
+@media screen and (max-width:825px) {
+    .main-visual-myname{
+        display: none;
+    }
+    header{
+        width: 100%;
+    }
+
+    .nav-list{
+        width: 100%;
+    }
+
+    .nav-list-item{
+        width: 100%;
+        margin-block: 0 0 10px 0;
+    }
+
+    .social{
+        display: none;/*flex解除*/
+    }
+
+    .main-visual-content{
+        width: 100%;
+    }
+
+    .various-contents{
+        width: 100%;
+        display: block;/*縦並びに変更*/
+    }
+    
+    .blog{
+        width: 100%;
+        margin: 0;
+    }
+
+    .blog-box{
+        padding-left: 2%;
+        padding-right: 2%;
+    }
+
+    .blog-image {
+        width: 49%;
+      }
+    
+      .blog-text {
+        width: 49%;
+        padding-top: 5px;
+      }
+
+    .sidebar{
+        width: 100%;
+        padding-left: 3%;
+        padding-right: 3%;
+
+    }
+
+    .instagram-box{
+        width: 48%;
+        padding-top: 48%;
+      }
+    
+
+    .instagram-box:nth-child(odd) {
+        margin-right: 4%;
+    }
+
+    .pagination{
+        margin-bottom: 50px;
+    }
+}
+
